@@ -10,8 +10,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-       - run: python main.py > resultats.txt
-       - uses: actions/upload-artifact@v4
-         with:
-           name: resultats
-           path: resultats.txt
+      - name: Lancer main.py
+        run: |
+          python main.py > resultats.txt
+          cat resultats.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resultats
+          path: resultats.txt
