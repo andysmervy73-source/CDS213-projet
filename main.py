@@ -22,9 +22,13 @@ def prix_max(maisons):
     """Retourne le prix le plus haut"""
     return max(float(m["prix"]) for m in maisons)
 if __name__ == "__main__":
-    maisons = charger_donnees("data/maisons.csv")
-    print(f"Nombre de maisons : {len(maisons)}")
-    print(f"Prix moyen : {prix_moyen(maisons):.0f}")
-    print(f"Prix moyen au m2 : {prix_par_m2(maisons):.0f}")
-    print(f"Prix minimum : {prix_min(maisons):.0f}")
-    print(f"Prix maximum : {prix_max(maisons):.0f}")
+    try:
+        maisons = charger_donnees("data/maisons.csv")
+    except FileNotFoundError:
+        print("Erreur : le fichier data/maisons.csv est introuvable.")
+    else:
+        print(f"Nombre de maisons : {len(maisons)}")
+        print(f"Prix moyen : {prix_moyen(maisons):.0f}")
+        print(f"Prix moyen au m2 : {prix_par_m2(maisons):.0f}")
+        print(f"Prix minimum : {prix_min(maisons):.0f}")
+        print(f"Prix maximum : {prix_max(maisons):.0f}")
